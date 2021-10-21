@@ -25,35 +25,18 @@ function onImageContainerClick(e) {
   if (!isImageEl) {
     return;
   }
+  const altImageSmall = e.target.getAttribute('alt');
+  for (let i = 0; i < galleryItems.length; i++) {
+    const galleryItem = galleryItems[i];
+    const srcGalleryItem = galleryItem.original;
+    const altGalleryItem = galleryItem.description;
+    if (altGalleryItem === altImageSmall) {
+      const instance = basicLightbox.create(`
+              <img src="${srcGalleryItem}" width="800" height="600">
 
-  const imageOriginalBig = galleryItems
-    .map(({ original, description }) => {
-      return `
-             <div class="gallery__item">
-           <img
-           class="gallery__image-big"
-           src="${original}"
-           alt="${description}"
-          />
-           </div>
-          `;
-    })
-    .join('');
+      `);
 
-  imageContainer.insertAdjacentHTML('beforeend', imageOriginalBig);
-  //   console.log(imageOriginalBig);
-  const getImageBig = document.querySelector('.gallery__image-big');
-  // console.log(image)
-  const scrImageBig = getImageBig.getAttribute('src');
-  const altImageBig = getImageBig.getAttribute('alt');
-  //   console.log(getImageBig);
-  //   console.log(scrImageBig);
-  //   console.log(altImageBig);
-
-  const instance = basicLightbox.create(`
-            //   <img src="${scrImageBig}" width="800" height="600">
-
-    `);
-  //  return;
-  instance.show();
+      return instance.show();
+    }
+  }
 }
