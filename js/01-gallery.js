@@ -30,6 +30,7 @@ function onImageContainerClick(e) {
   }
 
   let instance = '';
+  const getUrlbyDataSet = e.target.dataset.source;
 
   const options = {
     once: true,
@@ -48,9 +49,6 @@ function onImageContainerClick(e) {
       return;
     }
   }
-
-  const getUrlbyDataSet = e.target.dataset.source;
-
   instance = basicLightbox.create(
     `<img src="${getUrlbyDataSet}" width="800" height="600">`,
     options
