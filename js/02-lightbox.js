@@ -4,59 +4,77 @@ import { galleryItems } from './gallery-items.js';
 console.log(galleryItems);
 
 const imageContainer = document.querySelector('.gallery');
-
 const imagesMarkup = galleryItems
   .map(({ preview, original, description }) => {
-    return `
-    <div class="gallery__item">
-  <a class="gallery__link" href="${original}">
-    <img
-      class="gallery__image"
-      src="${preview}"
-      data-source="${original}"
-      alt="${description}"
-    />
-  </a>
-</div>`;
+    return `<li><a class="gallery__item" href="${original}">
+  <img class="gallery__image" src="${preview}" alt="${description}" />
+</a></li>`;
   })
   .join('');
 
 imageContainer.insertAdjacentHTML('beforeend', imagesMarkup);
-imageContainer.addEventListener('click', onImageContainerClick);
+console.log(imageContainer);
+// imageContainer.addEventListener('click', onImageContainerClick);
 
-function onImageContainerClick(e) {
-  e.preventDefault();
+// import { galleryItems } from './gallery-items.js';
+// // Change code below this line
 
-  if (e.target.nodeName !== 'IMG') {
-    return;
-  }
+// console.log(galleryItems);
 
-  let instance = '';
+// const imageContainer = document.querySelector('.gallery');
 
-  const options = {
-    once: true,
-    // open Modal
-    onShow: (instance) => {
-      window.addEventListener('keydown', eventHandler);
-    },
-    // cloze Modal
-    onClose: (instance) => {
-      window.removeEventListener('keydown', eventHandler);
-    },
-  };
-  function eventHandler(e) {
-    if (e.key === 'Escape') {
-      instance.close();
-      return;
-    }
-  }
+// const imagesMarkup = galleryItems
+//   .map(({ preview, original, description }) => {
+//     return `
+//     <div class="gallery__item">
+//   <a class="gallery__link" href="${original}">
+//     <img
+//       class="gallery__image"
+//       src="${preview}"
+//       data-source="${original}"
+//       alt="${description}"
+//     />
+//   </a>
+// </div>`;
+//   })
+//   .join('');
 
-  const getUrlbyDataSet = e.target.dataset.source;
+// imageContainer.insertAdjacentHTML('beforeend', imagesMarkup);
+// imageContainer.addEventListener('click', onImageContainerClick);
 
-  instance = basicLightbox.create(
-    `<img src="${getUrlbyDataSet}" width="800" height="600">`,
-    options
-  );
+// function onImageContainerClick(e) {
+//   e.preventDefault();
 
-  instance.show();
-}
+//   if (e.target.nodeName !== 'IMG') {
+//     return;
+//   }
+
+//   let instance = '';
+
+//   const options = {
+//     once: true,
+//     // open Modal
+//     onShow: (instance) => {
+//       window.addEventListener('keydown', eventHandler);
+//     },
+//     // cloze Modal
+//     onClose: (instance) => {
+//       window.removeEventListener('keydown', eventHandler);
+//     },
+//   };
+//   function eventHandler(e) {
+//     if (e.key === 'Escape') {
+//       instance.close();
+//       return;
+//     }
+//   }
+
+//   const getUrlbyDataSet = e.target.dataset.source;
+
+//   instance = basicLightbox.create(
+//     `<img src="${getUrlbyDataSet}" width="800" height="600">`,
+//     options
+//   );
+
+//   instance.show();
+// }

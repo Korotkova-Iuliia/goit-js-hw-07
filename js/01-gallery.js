@@ -1,5 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
+// вариант 3
 const imageContainer = document.querySelector('.gallery');
 
 const imagesMarkup = galleryItems
@@ -54,6 +55,5 @@ function onImageContainerClick(e) {
     `<img src="${getUrlbyDataSet}" width="800" height="600">`,
     options
   );
-
   instance.show();
 }
