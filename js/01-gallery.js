@@ -25,7 +25,7 @@ imageContainer.addEventListener('click', onImageContainerClick);
 function onImageContainerClick(e) {
   e.preventDefault();
 
-  console.log(imageContainer.getAttribute('a[href="${original}"]'));
+  // console.log(imageContainer.getAttribute('a[href="${original}"]'));
   if (e.target.nodeName !== 'IMG') {
     return;
   }
